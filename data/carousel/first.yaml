@@ -1,0 +1,10 @@
+weight: 4
+title: "Première"
+description: >
+  <ul class="list-style-none">
+    <li>7 preprepared colour variations.</li>
+    <li>Easily to change fonts</li>
+  </ul>
+image: "/img/carousel/baby.jpg"
+size: "100% auto"
+position: "0 100%"

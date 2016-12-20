@@ -1,11 +1,13 @@
 <!-- Sidebar -->
+<aside class="site">
 <section id="sidebar">
 
-    <!-- Posts List -->
+    {{ partial "social.html" . }}
+    <!-- Posts List -
     <section id="recent-posts">
     	<ul class="posts">
 		<header>
-                    <h3>Recent Posts</h3>
+            <h3>Recent Posts</h3>
                 </header>
                 {{ if .Site.Params.orderByPublishDate }}
                     {{ $.Scratch.Set "recentPosts" .Site.Pages.ByPublishDate.Reverse }}
@@ -52,6 +54,7 @@
                 {{ end }}
             </ul>
         </section>
+    -->
 
     <!-- This if statement only applies if someone goes to the /categories url -->
     <!-- Otherwise this section is shown for all other links -->
@@ -70,44 +73,22 @@
                 {{ end }}
 
                 {{ range $key, $value := $.Scratch.Get "categories" }}
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/{{ $value.Name | urlize }}/">{{ $value.Name }}</a>
-                                <span style="float:right;">{{ $value.Count }}</span>
-                            </header>
-                        </article>
-                    </li>
+                    <li><a href="/categories/{{ $value.Name | urlize }}/">{{ $value.Name }}</a></li>
                 {{ end }}
             </ul>
         </section>
     {{ end }}
 
     <!-- About -->
-        {{ with .Site.Params.intro.about }}
-        <section class="blurb">
-            <h2>About</h2>
-            <p>{{ . }}</p>
+    {{ with .Site.Params.intro.about }}
+    <section class="blurb">
+        <h2>About</h2>
+        <p>{{ . }}</p>
 
-            <ul class="actions">
-                <li><a href="/about/" class="button">Learn More</a></li>
-            </ul>
-        </section>
-        {{ end }}
+        <ul class="actions">
+            <li><a href="/about/" class="button">Learn More</a></li>
+        </ul>
+    </section>
+    {{ end }}
 
-    <!-- Footer -->
-        <section id="footer">
-            <ul class="icons">
-                {{ if .RSSLink }}
-                    <li><a href="{{ .RSSLink }}" type="application/rss+xml"
-                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
-                {{ end }}
-                {{ if .Site.Params.socialAppearAtBottom }}
-                    {{ partial "social" . }}
-                {{ end }}
-            </ul>
-
-            <p class="copyright">&copy; {{ .Site.Title }}. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
-        </section>
-
-</section>
+</aside>

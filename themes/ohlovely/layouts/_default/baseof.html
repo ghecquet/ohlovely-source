@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {{ partial "meta.html" . }}
+    {{ with .Site.Params.googlefonts }}
+    <link href="{{ . }}" rel="stylesheet">
+    {{ else }}
+    <link href="//fonts.googleapis.com/css?family=Noto+Sans:400,700|Montserrat" rel="stylesheet">
+    {{ end }}
+    <link rel="icon" type="image/png" href="/img/main/favicon.png" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
+    <title>{{ block "title" . }}{{ end }}{{ .Site.Title }}</title>
+    {{ block "meta" . }}{{ end }}
+    <style>
+      {{ replaceRE " +" " " (replaceRE "\n" "" (partial "styles.css" .)) | safeCSS }}
+      {{ with .Site.Params.fontfamily }} body { font-family: {{ . | safeCSS }}; } {{ end }}
+      {{ with .Site.Params.logofontfamily }} .h-logo { font-family: {{ . | safeCSS }}; } {{ end }}
+    </style>
+  </head>
+
+  <body>
+    {{ if ne (getenv "HUGO_ENV") "DEV" }}
+    {{ template "_internal/google_analytics.html" . }}
+    {{ end }}
+
+    {{ partial "header.html" . }}
+
+    {{ partial "intro.html" . }}
+
+    {{ partial "carousel.html" . }}
+
+    <main>
+      <div class="container">
+        {{ block "main" . }}{{ end }}
+      </div>
+    </main>
+
+    {{ partial "footer.html" . }}
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+
+        $('.homepage').owlCarousel({
+            navigation: true,
+            navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+            slideSpeed: 2000,
+            paginationSpeed: 1000,
+            autoPlay: true,
+            stopOnHover: true,
+            singleItem: true,
+            lazyLoad: false,
+            addClassActive: true,
+            afterInit: function () {
+            // animationsSlider()
+            },
+            afterMove: function () {
+            // animationsSlider()
+            }
+        });
+    </script>
+  </body>
+</html>

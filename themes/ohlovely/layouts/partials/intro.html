@@ -1,45 +1,28 @@
+<!-- Intro -->
+<section class="l-intro">
 
-    <!-- Intro -->
-        <section id="intro">
-            {{ $pic := .Site.Params.intro.pic }}
-            {{ with $pic.src }}
-                {{ if $pic.circle }}
-                    <img src="{{ . }}" class="intro-circle" width="{{ $pic.width }}" alt="{{ $pic.alt }}" />
-                {{ else if $pic.imperfect }}
-                    <a href="/" class="logo"><img src="{{ . }}" alt="{{ $pic.alt }}" /></a>
-                {{ else }}
-                    <img src="{{ . }}" width="{{ $pic.width }}" alt="{{ $pic.alt }}" />
-                {{ end }}
-            {{ end }}
-            {{ with .Site.Params.intro }}
-                <header>
-                    <h2>{{ .header }}</h2>
-                    <p>{{ .paragraph | safeHTML }}</p>
-                </header>
-            {{ end }}
-            <ul class="icons">
-		<li><span class="fa fa-star"></span></li>
+    <section class="p-logo">
+        {{ $pic := .Site.Params.intro.pic }}
+        {{ with $pic.src }}
+        {{ if $pic.circle }}
+        <img src="{{ . }}" class="intro-circle" width="{{ $pic.width }}" alt="{{ $pic.alt }}" />
+        {{ else if $pic.imperfect }}
+        <a href="/" class="logo"><img src="{{ . }}" alt="{{ $pic.alt }}" /></a>
+        {{ else }}
+        <img src="{{ . }}" width="{{ $pic.width }}" alt="{{ $pic.alt }}" />
+        {{ end }}
+        {{ end }}
+    </section>
 
-                {{ if .RSSLink }}
-                    <li><a href="{{ .RSSLink }}" type="application/rss+xml"
-                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
-                {{ end }}
-                {{ if .Site.Params.socialAppearAtTop }}
-                    {{ partial "social" . }}
-                {{ end }}
-            </ul>
-
-            <ul class="posts">
-                {{ if .Site.Params.categoriesByCount }}
-                    {{ $.Scratch.Set "categories" .Site.Taxonomies.categories.ByCount }}
-                {{ else }}
-                    {{ $.Scratch.Set "categories" .Site.Taxonomies.categories.Alphabetical }}
-                {{ end }}
-
-                {{ range $key, $value := $.Scratch.Get "categories" }}
-                    <li>
-		    	<a href="/categories/{{ $value.Name | urlize }}/">{{ $value.Name }}</a>
-                    </li>
-                {{ end }}
-            </ul>
-        </section>
+    <section class="p-catchphrase">
+        {{ $intro := .Site.Params.intro }}
+        {{ with $intro }}
+        {{ if $intro.header }}
+        <h2>{{ .header }}</h2>
+        {{ end }}
+        {{ if $intro.paragraph  }}
+        <p>{{ .paragraph | safeHTML }}</p>
+        {{ end }}
+        {{ end }}
+    </section>
+</section>

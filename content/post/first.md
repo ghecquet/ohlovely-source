@@ -1,6 +1,6 @@
 +++
 date = "2016-07-28T22:21:02+02:00"
-categories = ["Voyages", "DIY", "Déco", "Lifestyle", "Baby"] 
+categories = ["Voyages", "DIY", "Déco", "Lifestyle", "Baby"]
 title = "first"
 author = "Greg Hecquet"
 description = ""
@@ -9,8 +9,5 @@ featuredalt = ""
 featuredpath = ""
 linktitle = ""
 type = "post"
-
+thumbnail = "http://placehold.it/320x250"
 +++
-
-
-
