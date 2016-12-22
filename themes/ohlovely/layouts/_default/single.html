@@ -1,6 +1,24 @@
-<article class="post">
-{{ $.Scratch.Set "h1" true }}
-<div id="content">
-{{ .Content }}
-</div>
-</article>
+{{ define "title" }}{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ end }}
+
+{{ define "main" }}
+    <div class="row">
+        <div class="col-md-8">
+            <article class="p-post">
+                {{ $.Scratch.Set "h1" true }}
+                <div id="content">
+                    <h3>{{ .Title }}</h3>
+                    {{ .Content }}
+                </div>
+            </article>
+            <!-- /#post-content -->
+            {{ if .Site.DisqusShortname }}
+            <div id="comments">
+                {{ template "_internal/disqus.html" . }}
+            </div>
+            {{ end }}
+        </div>
+        <div class="col-md-4">
+            {{ partial "sidebar.html" . }}
+        </div>
+    </div>
+{{ end }}

@@ -6,43 +6,61 @@
     </div>
   </div>
 </header>-->
-<header id="header" class="l-header">
-    {{ if and (.IsNode) (or (.IsHome) (eq .Title "Posts")) }}
-        <h1><a href="/"><img src="/img/main/ohlovely.png" width="" alt="Oh Lovely"></i></a></h1>
-    {{ else }}
-        <h2><a href="/"><img src="/img/main/ohlovely.png" width="" alt="Oh Lovely"></i></a></h2>
-    {{ end }}
-
-    <nav class="p-nav-links">
-        <ul>
-            {{ range .Site.Menus.main }}
-                <li>
-                    <a href="{{ .URL }}">
-                        {{ with .Identifier }}
-                            <i class="{{ . }}">&nbsp;</i>{{ end }}{{ .Name }}
+<header class="l-header">
+    <div class="navbar-affixed-top affix-top" data-spy="affix" data-offset-top="200">
+        <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand home" href="/">
+                    <img src="{{ .Site.BaseURL }}/img/main/ohlovely.png" class="hidden-xs hidden-sm" alt="Oh Lovely"></a>
                     </a>
-                </li>
-            {{ end }}
-        </ul>
-    </nav>
+                    <div class="navbar-buttons">
+                        <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                            <span class="sr-only">Toggle navigation</span>
+                            <i class="fa fa-align-justify"></i>
+                        </button>
+                    </div>
+                </div>
 
-    <nav class="p-nav-right">
-        <ul>
-            {{ if $.Scratch.Get "shareNav" }}
-            <li id="share-nav" class="share-menu" style="display:none;">
-                <a class="fa-share-alt" href="#share-menu">Share</a>
-            </li>
-            {{ end }}
-            <li class="search">
-                <a class="fa-search" href="#search">Search</a>
-                <form id="search" method="get" action="//google.com/search">
-                    <input type="text" name="q" placeholder="Search" />
-                    <input type="hidden" name="q" value="site:{{ .Site.BaseURL }}">
-                </form>
-            </li>
-            <li class="menu">
-                <a class="fa-bars" href="#menu">Menu</a>
-            </li>
-        </ul>
-    </nav>
+                <nav class="p-nav-links navbar-collapse collapse" id="navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        {{ range .Site.Menus.main }}
+                            <li>
+                                <a href="{{ .URL }}">
+                                    {{ with .Identifier }}
+                                        <i class="{{ . }}">&nbsp;</i>{{ end }}{{ .Name }}
+                                </a>
+                            </li>
+                        {{ end }}
+                    </ul>
+                </nav>
+
+                <div class="p-nav-right collapse clearfix" id="search">
+                    <div>
+                        <ul>
+                            {{ if $.Scratch.Get "shareNav" }}
+                            <li id="share-nav" class="share-menu" style="display:none;">
+                                <a class="fa-share-alt" href="#share-menu">Share</a>
+                            </li>
+                            {{ end }}
+                            <li class="search">
+                                <a class="fa-search" href="#search">Search</a>
+                                <form class="navbar-form" role="search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search">
+                                        <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </li>
+                            <li class="menu">
+                                <a class="fa-bars" href="#menu">Menu</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
