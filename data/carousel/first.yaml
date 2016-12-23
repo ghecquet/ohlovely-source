@@ -6,6 +6,6 @@ description: >
     <li>Easily to change fonts</li>
   </ul>
 image: "/img/carousel/baby.jpg"
-size: "100% auto"
+size: "cover"
 position: "0 99%"
 link: "/post/first/"
