@@ -2,18 +2,17 @@
     <figure class="thumb survol inview">
         <img width="600" height="400" src="{{ .Params.thumbnail }}">
         <div class="mask">
-
             <section>
                 <ul class="p-facts">
-                  <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05JST" }}">{{ .Lastmod.Format ( .Site.Params.dateformat | default "2 Jan 2006") }}</time></li>
-                  {{ with .Section }}<li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="{{ $.Site.BaseURL }}{{ . | urlize }}/">{{ . }}</a></li>{{ end }}
-                  {{ if eq (getenv "HUGO_ENV") "DEV" }}
-                  <li>{{ .WordCount }} Words</li>
-                  {{ if .IsDraft }}<li style="color: #2196f3;">DRAFT</li>{{ end }}
-                  {{ end }}
+                    <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05JST" }}">{{ .Lastmod.Format ( .Site.Params.dateformat | default "2 Jan 2006") }}</time></li>
+                    {{ with .Section }}<li><i class="fa fa-bookmark" aria-hidden="true"></i><a href="{{ $.Site.BaseURL }}{{ . | urlize }}/">{{ . }}</a></li>{{ end }}
+                    {{ if eq (getenv "HUGO_ENV") "DEV" }}
+                    <li>{{ .WordCount }} Words</li>
+                    {{ if .IsDraft }}<li style="color: #2196f3;">DRAFT</li>{{ end }}
+                    {{ end }}
                 </ul>
 
-                <div class="summary">{{ .Summary }}</div>
+                <div class="summary"><a href="{{ .Permalink }}">{{ .Summary }}</a></div>
             </section>
         </div>
     </figure>

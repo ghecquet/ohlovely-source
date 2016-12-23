@@ -1,18 +1,18 @@
 {{ if isset .Site.Params "carousel" }}
 {{ if .Site.Params.carousel.enable }}
 {{ if gt (len .Site.Data.carousel) 0 }}
-<section>
+<section class="l-picture animated">
     <div class="carousel">
         <div class="container">
             <div class="homepage owl-carousel-single-item">
                 {{ range sort .Site.Data.carousel "weight" }}
-                <div class="slide" style="background-image:url({{ .image }}); background-size: {{ .size }}; background-position: {{ .position }}; height: 460px; background-color: rgba(54, 25, 25, .5);">
+                <a href="{{ .link }}"><div class="slide" style="background-image:url({{ .image }}); background-size: {{ .size }}; background-position: {{ .position }}; height: 460px; background-color: rgba(54, 25, 25, .5);">
                     <section>
                         <h2>{{ .title }}</h2>
                         <div>{{ .description | safeHTML }}</div>
                     </section>
                     <div class="mask"></div>
-                </div>
+                </div></a>
                 {{ end }}
             </div>
             <!-- /.project owl-slider -->

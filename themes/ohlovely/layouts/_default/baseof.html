@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
     <title>{{ block "title" . }}{{ end }}{{ .Site.Title }}</title>
     {{ block "meta" . }}{{ end }}
     <style>
@@ -31,9 +32,9 @@
 
     {{ partial "intro.html" . }}
 
-    {{ partial "carousel.html" . }}
+    {{ block "picture" . }}{{ end }}
 
-    <main>
+    <main class="animated">
         <div class="container">
             {{ block "main" . }}{{ end }}
         </div>
